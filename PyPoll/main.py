@@ -28,18 +28,29 @@ with open(budget_csv_path, newline="") as csvfile:
             count3 = count3 + 1
         elif row[2] == Candidates[3]:
             count4 = count4 + 1
-
-
-
-        
-    print("Total Votes:" +str(totalVotes))
-    print(Candidates)
+    VotesForPerson = {"Khan":count1, "Corey":count2, "Li":count3, "O'Tooley":count4}
+    print("Election Results \n")
+    print("----------------------------\n")
+    print("Total Votes: " +str(totalVotes) +"\n")
+    print("----------------------------\n")
     print(Candidates[0] + ": " +str(round((count1/totalVotes)*100, 3)) + "% (" + str(count1) + ")")
     print(Candidates[1] + ": " +str(round((count2/totalVotes)*100, 3)) + "% (" + str(count2) + ")")
     print(Candidates[2] + ": " +str(round((count3/totalVotes)*100, 3)) + "% (" + str(count3) + ")")
     print(Candidates[3] + ": " +str(round((count4/totalVotes)*100, 3)) + "% (" + str(count4) + ")")
+    print("----------------------------\n")
+    print("Winner : "+ max(VotesForPerson, key=VotesForPerson.get) +"\n")
+    print("----------------------------\n")
     
-    VotesForPerson = [count1, count2, count3, count4]
-    print("Winner: " + str(max(count1, count2, count3, count4)))
-    #print(
-    #print("Percentage: " +str((totalVotes/Candidates.count) * 100))
+#Writing output to text file
+textfile = open('output/PyPoll.txt', "w")
+textfile.write("Election Results \n")
+textfile.write("---------------------------------\n")
+textfile.write("Total Votes: " +str(totalVotes) +"\n")
+textfile.write("---------------------------------\n")
+textfile.write(Candidates[0] + ": " +str(round((count1/totalVotes)*100, 3)) + "% (" + str(count1) + ")\n")
+textfile.write(Candidates[1] + ": " +str(round((count2/totalVotes)*100, 3)) + "% (" + str(count1) + ")\n")
+textfile.write(Candidates[2] + ": " +str(round((count3/totalVotes)*100, 3)) + "% (" + str(count1) + ")\n")
+textfile.write(Candidates[3] + ": " +str(round((count4/totalVotes)*100, 3)) + "% (" + str(count1) + ")\n")
+textfile.write("---------------------------------\n")
+textfile.write("Winner : "+ max(VotesForPerson, key=VotesForPerson.get) +"\n")
+textfile.write("---------------------------------\n")
